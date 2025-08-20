@@ -1,0 +1,270 @@
+{
+  "KPC React Component": {
+    "prefix": "kpc-component",
+    "body": [
+      "import React from 'react';",
+      "",
+      "interface ${1:ComponentName}Props {",
+      "  ${2:// Add props here}",
+      "}",
+      "",
+      "const ${1:ComponentName}: React.FC<${1:ComponentName}Props> = ({",
+      "  ${3:// Destructure props}",
+      "}) => {",
+      "  return (",
+      "    <div className=\"${4:component-class}\">",
+      "      ${5:// Component content}",
+      "    </div>",
+      "  );",
+      "};",
+      "",
+      "export default ${1:ComponentName};"
+    ],
+    "description": "Create a new KPC React component with TypeScript"
+  },
+  "KPC Button": {
+    "prefix": "kpc-button",
+    "body": [
+      "<Button",
+      "  variant=\"${1|primary,secondary,success,warning,danger|}\"",
+      "  size=\"${2|small,medium,large|}\"",
+      "  ${3:disabled={false\\}}",
+      "  onClick={${4:handleClick}}",
+      ">",
+      "  ${5:Button Text}",
+      "</Button>"
+    ],
+    "description": "Insert KPC Button component"
+  },
+  "KPC Input": {
+    "prefix": "kpc-input",
+    "body": [
+      "<Input",
+      "  type=\"${1|text,password,email,number|}\"",
+      "  placeholder=\"${2:Enter text...}\"",
+      "  value={${3:value}}",
+      "  onChange={${4:handleChange}}",
+      "  ${5:required={true\\}}",
+      "/>"
+    ],
+    "description": "Insert KPC Input component"
+  },
+  "KPC Modal": {
+    "prefix": "kpc-modal",
+    "body": [
+      "<Modal",
+      "  visible={${1:isVisible}}",
+      "  title=\"${2:Modal Title}\"",
+      "  onClose={${3:handleClose}}",
+      "  ${4:closable={true\\}}",
+      ">",
+      "  ${5:// Modal content}",
+      "</Modal>"
+    ],
+    "description": "Insert KPC Modal component"
+  },
+  "KPC Form": {
+    "prefix": "kpc-form",
+    "body": [
+      "<Form",
+      "  onSubmit={${1:handleSubmit}}",
+      "  ${2:layout=\"vertical\"}",
+      ">",
+      "  <Form.Item",
+      "    label=\"${3:Label}\"",
+      "    name=\"${4:fieldName}\"",
+      "    ${5:required={true\\}}",
+      "  >",
+      "    <Input placeholder=\"${6:Enter value...}\" />",
+      "  </Form.Item>",
+      "  ",
+      "  <Form.Item>",
+      "    <Button type=\"submit\" variant=\"primary\">",
+      "      ${7:Submit}",
+      "    </Button>",
+      "  </Form.Item>",
+      "</Form>"
+    ],
+    "description": "Insert KPC Form with form items"
+  },
+  "KPC Table": {
+    "prefix": "kpc-table",
+    "body": [
+      "const columns = [",
+      "  {",
+      "    title: '${1:Column Title}',",
+      "    dataIndex: '${2:dataKey}',",
+      "    key: '${2:dataKey}',",
+      "  },",
+      "  ${3:// Add more columns}",
+      "];",
+      "",
+      "<Table",
+      "  columns={columns}",
+      "  dataSource={${4:data}}",
+      "  ${5:pagination={true\\}}",
+      "  ${6:loading={false\\}}",
+      "/>"
+    ],
+    "description": "Insert KPC Table with columns"
+  },
+  "KPC Card": {
+    "prefix": "kpc-card",
+    "body": [
+      "<Card",
+      "  title=\"${1:Card Title}\"",
+      "  ${2:bordered={true\\}}",
+      "  ${3:hoverable={false\\}}",
+      ">",
+      "  ${4:// Card content}",
+      "</Card>"
+    ],
+    "description": "Insert KPC Card component"
+  },
+  "KPC Menu": {
+    "prefix": "kpc-menu",
+    "body": [
+      "<Menu",
+      "  mode=\"${1|horizontal,vertical,inline|}\"",
+      "  selectedKeys={${2:selectedKeys}}",
+      "  onSelect={${3:handleSelect}}",
+      ">",
+      "  <Menu.Item key=\"${4:key1}\">",
+      "    ${5:Menu Item 1}",
+      "  </Menu.Item>",
+      "  <Menu.Item key=\"${6:key2}\">",
+      "    ${7:Menu Item 2}",
+      "  </Menu.Item>",
+      "  ${8:// Add more menu items}",
+      "</Menu>"
+    ],
+    "description": "Insert KPC Menu component"
+  },
+  "KPC Dropdown": {
+    "prefix": "kpc-dropdown",
+    "body": [
+      "const menu = (",
+      "  <Menu onClick={${1:handleMenuClick}}>",
+      "    <Menu.Item key=\"${2:key1}\">${3:Option 1}</Menu.Item>",
+      "    <Menu.Item key=\"${4:key2}\">${5:Option 2}</Menu.Item>",
+      "  </Menu>",
+      ");",
+      "",
+      "<Dropdown overlay={menu} trigger={['${6|click,hover|}']} placement=\"${7|bottomLeft,bottomCenter,bottomRight|}\">",
+      "  <Button>",
+      "    ${8:Dropdown Button}",
+      "  </Button>",
+      "</Dropdown>"
+    ],
+    "description": "Insert KPC Dropdown component"
+  },
+  "KPC Tooltip": {
+    "prefix": "kpc-tooltip",
+    "body": [
+      "<Tooltip",
+      "  title=\"${1:Tooltip content}\"",
+      "  placement=\"${2|top,bottom,left,right|}\"",
+      "  ${3:trigger=\"hover\"}",
+      ">",
+      "  ${4:// Wrapped content}",
+      "</Tooltip>"
+    ],
+    "description": "Insert KPC Tooltip component"
+  },
+  "KPC Alert": {
+    "prefix": "kpc-alert",
+    "body": [
+      "<Alert",
+      "  type=\"${1|success,info,warning,error|}\"",
+      "  message=\"${2:Alert message}\"",
+      "  ${3:description=\"${4:Alert description}\"}",
+      "  ${5:closable={true\\}}",
+      "  ${6:showIcon={true\\}}",
+      "/>"
+    ],
+    "description": "Insert KPC Alert component"
+  },
+  "KPC Progress": {
+    "prefix": "kpc-progress",
+    "body": [
+      "<Progress",
+      "  percent={${1:50}}",
+      "  type=\"${2|line,circle,dashboard|}\"",
+      "  ${3:status=\"${4|normal,success,exception,active|}\"}",
+      "  ${5:showInfo={true\\}}",
+      "/>"
+    ],
+    "description": "Insert KPC Progress component"
+  },
+  "KPC Spin": {
+    "prefix": "kpc-spin",
+    "body": [
+      "<Spin",
+      "  spinning={${1:loading}}",
+      "  ${2:tip=\"${3:Loading...}\"}",
+      "  ${4:size=\"${5|small,default,large|}\"}",
+      ">",
+      "  ${6:// Content to be wrapped}",
+      "</Spin>"
+    ],
+    "description": "Insert KPC Spin (loading) component"
+  },
+  "KPC Tabs": {
+    "prefix": "kpc-tabs",
+    "body": [
+      "<Tabs",
+      "  activeKey={${1:activeKey}}",
+      "  onChange={${2:handleTabChange}}",
+      "  type=\"${3|line,card,editable-card|}\"",
+      ">",
+      "  <Tabs.TabPane tab=\"${4:Tab 1}\" key=\"${5:tab1}\">",
+      "    ${6:// Tab 1 content}",
+      "  </Tabs.TabPane>",
+      "  <Tabs.TabPane tab=\"${7:Tab 2}\" key=\"${8:tab2}\">",
+      "    ${9:// Tab 2 content}",
+      "  </Tabs.TabPane>",
+      "</Tabs>"
+    ],
+    "description": "Insert KPC Tabs component"
+  },
+  "KPC Steps": {
+    "prefix": "kpc-steps",
+    "body": [
+      "<Steps current={${1:currentStep}} direction=\"${2|horizontal,vertical|}\">",
+      "  <Steps.Step title=\"${3:Step 1}\" description=\"${4:Step 1 description}\" />",
+      "  <Steps.Step title=\"${5:Step 2}\" description=\"${6:Step 2 description}\" />",
+      "  <Steps.Step title=\"${7:Step 3}\" description=\"${8:Step 3 description}\" />",
+      "</Steps>"
+    ],
+    "description": "Insert KPC Steps component"
+  },
+  "KPC DatePicker": {
+    "prefix": "kpc-datepicker",
+    "body": [
+      "<DatePicker",
+      "  value={${1:selectedDate}}",
+      "  onChange={${2:handleDateChange}}",
+      "  placeholder=\"${3:Select date}\"",
+      "  ${4:format=\"YYYY-MM-DD\"}",
+      "  ${5:showTime={false\\}}",
+      "/>"
+    ],
+    "description": "Insert KPC DatePicker component"
+  },
+  "KPC Upload": {
+    "prefix": "kpc-upload",
+    "body": [
+      "<Upload",
+      "  action=\"${1:/api/upload}\"",
+      "  onChange={${2:handleUploadChange}}",
+      "  ${3:multiple={false\\}}",
+      "  ${4:accept=\"${5:.jpg,.png,.pdf}\"}",
+      ">",
+      "  <Button icon={<UploadOutlined />}>",
+      "    ${6:Click to Upload}",
+      "  </Button>",
+      "</Upload>"
+    ],
+    "description": "Insert KPC Upload component"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@kpc/crawler": ["./packages/crawler/src"],
+      "@kpc/parser": ["./packages/parser/src"],
+      "@kpc/knowledge": ["./packages/knowledge/src"],
+      "@kpc/codegen": ["./packages/codegen/src"],
+      "@kpc/validator": ["./packages/validator/src"],
+      "@kpc/api": ["./packages/api/src"],
+      "@kpc/cli": ["./packages/cli/src"],
+      "@kpc/web": ["./packages/web/src"],
+      "@kpc/shared": ["./packages/shared/src"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    ".next"
+  ]
+}

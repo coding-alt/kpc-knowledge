@@ -1,0 +1,218 @@
+{
+  "name": "kpc-knowledge-system",
+  "displayName": "KPC Knowledge System",
+  "description": "Intelligent frontend code generation and validation for KPC components",
+  "version": "1.0.0",
+  "publisher": "ksc-fe",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other",
+    "Snippets",
+    "Linters",
+    "Formatters"
+  ],
+  "keywords": [
+    "kpc",
+    "components",
+    "react",
+    "vue",
+    "intact",
+    "code-generation",
+    "ai"
+  ],
+  "activationEvents": [
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact",
+    "onLanguage:javascript",
+    "onLanguage:javascriptreact",
+    "onLanguage:vue",
+    "onCommand:kpc.generateComponent",
+    "onCommand:kpc.validateCode",
+    "onCommand:kpc.searchComponents"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "kpc.generateComponent",
+        "title": "Generate Component",
+        "category": "KPC"
+      },
+      {
+        "command": "kpc.validateCode",
+        "title": "Validate Code",
+        "category": "KPC"
+      },
+      {
+        "command": "kpc.searchComponents",
+        "title": "Search Components",
+        "category": "KPC"
+      },
+      {
+        "command": "kpc.previewComponent",
+        "title": "Preview Component",
+        "category": "KPC"
+      },
+      {
+        "command": "kpc.fixIssues",
+        "title": "Fix Issues",
+        "category": "KPC"
+      },
+      {
+        "command": "kpc.showComponentInfo",
+        "title": "Show Component Info",
+        "category": "KPC"
+      },
+      {
+        "command": "kpc.insertSnippet",
+        "title": "Insert Component Snippet",
+        "category": "KPC"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "resourceExtname =~ /\\.(tsx|jsx|vue)$/",
+          "command": "kpc.generateComponent",
+          "group": "kpc@1"
+        },
+        {
+          "when": "resourceExtname =~ /\\.(tsx|jsx|vue)$/",
+          "command": "kpc.validateCode",
+          "group": "kpc@2"
+        },
+        {
+          "when": "resourceExtname =~ /\\.(tsx|jsx|vue)$/",
+          "command": "kpc.previewComponent",
+          "group": "kpc@3"
+        }
+      ],
+      "explorer/context": [
+        {
+          "when": "resourceExtname =~ /\\.(tsx|jsx|vue)$/",
+          "command": "kpc.showComponentInfo",
+          "group": "kpc@1"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "kpc.generateComponent",
+        "key": "ctrl+shift+g",
+        "mac": "cmd+shift+g",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "kpc.validateCode",
+        "key": "ctrl+shift+v",
+        "mac": "cmd+shift+v",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "kpc.searchComponents",
+        "key": "ctrl+shift+s",
+        "mac": "cmd+shift+s"
+      }
+    ],
+    "configuration": {
+      "title": "KPC Knowledge System",
+      "properties": {
+        "kpc.apiEndpoint": {
+          "type": "string",
+          "default": "http://localhost:4000/graphql",
+          "description": "KPC API endpoint URL"
+        },
+        "kpc.framework": {
+          "type": "string",
+          "enum": ["react", "vue", "intact", "auto"],
+          "default": "auto",
+          "description": "Default framework for code generation"
+        },
+        "kpc.typescript": {
+          "type": "boolean",
+          "default": true,
+          "description": "Generate TypeScript code by default"
+        },
+        "kpc.autoCompletion": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable intelligent auto-completion"
+        },
+        "kpc.realTimeValidation": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable real-time code validation"
+        },
+        "kpc.showInlineHints": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show inline component hints"
+        },
+        "kpc.previewOnHover": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show component preview on hover"
+        }
+      }
+    },
+    "snippets": [
+      {
+        "language": "typescriptreact",
+        "path": "./snippets/react.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./snippets/react.json"
+      },
+      {
+        "language": "vue",
+        "path": "./snippets/vue.json"
+      }
+    ],
+    "views": {
+      "explorer": [
+        {
+          "id": "kpcComponents",
+          "name": "KPC Components",
+          "when": "kpc.enabled"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "kpc",
+          "title": "KPC Knowledge System",
+          "icon": "$(symbol-class)"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "eslint": "^8.28.0",
+    "typescript": "^4.9.4",
+    "@vscode/test-electron": "^2.2.0",
+    "vsce": "^2.15.0"
+  },
+  "dependencies": {
+    "@kpc/shared": "^1.0.0",
+    "axios": "^1.6.0",
+    "graphql": "^16.8.0",
+    "graphql-request": "^6.1.0"
+  }
+}

@@ -1,0 +1,138 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kpc-ingress
+  namespace: kpc-system
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "300"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "300"
+    nginx.ingress.kubernetes.io/rate-limit: "100"
+    nginx.ingress.kubernetes.io/rate-limit-window: "1m"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  tls:
+  - hosts:
+    - kpc.example.com
+    - api.kpc.example.com
+    - monitoring.kpc.example.com
+    secretName: kpc-tls-secret
+  rules:
+  - host: kpc.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: kpc-web
+            port:
+              number: 3001
+  - host: api.kpc.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: kpc-api
+            port:
+              number: 3000
+  - host: monitoring.kpc.example.com
+    http:
+      paths:
+      - path: /grafana
+        pathType: Prefix
+        backend:
+          service:
+            name: grafana
+            port:
+              number: 3000
+      - path: /prometheus
+        pathType: Prefix
+        backend:
+          service:
+            name: prometheus
+            port:
+              number: 9090
+
+---
+# Network Policies for Security
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: kpc-network-policy
+  namespace: kpc-system
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: ingress-nginx
+    - namespaceSelector:
+        matchLabels:
+          name: kpc-system
+  - ports:
+    - protocol: TCP
+      port: 3000
+    - protocol: TCP
+      port: 3001
+    - protocol: TCP
+      port: 5432
+    - protocol: TCP
+      port: 7474
+    - protocol: TCP
+      port: 7687
+    - protocol: TCP
+      port: 6379
+    - protocol: TCP
+      port: 19530
+    - protocol: TCP
+      port: 2379
+    - protocol: TCP
+      port: 9000
+  egress:
+  - {}
+
+---
+# Service Monitor for Prometheus
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: kpc-api-metrics
+  namespace: kpc-system
+  labels:
+    app: kpc-api
+spec:
+  selector:
+    matchLabels:
+      app: kpc-api
+  endpoints:
+  - port: http
+    path: /metrics
+    interval: 30s
+
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: milvus-metrics
+  namespace: kpc-system
+  labels:
+    app: milvus-standalone
+spec:
+  selector:
+    matchLabels:
+      app: milvus-standalone
+  endpoints:
+  - port: metrics
+    path: /metrics
+    interval: 30s

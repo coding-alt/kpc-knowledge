@@ -1,0 +1,75 @@
+version: '3.8'
+
+services:
+  # Test Database Services
+  postgres-test:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=kpc_test_db
+      - POSTGRES_USER=kpc_test
+      - POSTGRES_PASSWORD=kpc_test_password
+    ports:
+      - "5433:5432"
+    tmpfs:
+      - /var/lib/postgresql/data
+    command: postgres -c fsync=off -c synchronous_commit=off -c full_page_writes=off
+
+  neo4j-test:
+    image: neo4j:5.13-community
+    environment:
+      - NEO4J_AUTH=neo4j/test_password
+      - NEO4J_dbms_memory_heap_initial__size=256m
+      - NEO4J_dbms_memory_heap_max__size=512m
+      - NEO4J_dbms_memory_pagecache_size=256m
+    ports:
+      - "7475:7474"
+      - "7688:7687"
+    tmpfs:
+      - /data
+      - /logs
+
+  redis-test:
+    image: redis:7-alpine
+    ports:
+      - "6380:6379"
+    command: redis-server --save "" --appendonly no --maxmemory 128mb
+
+  # Lightweight Milvus for testing
+  etcd-test:
+    image: quay.io/coreos/etcd:v3.5.5
+    environment:
+      - ETCD_AUTO_COMPACTION_MODE=revision
+      - ETCD_AUTO_COMPACTION_RETENTION=1000
+      - ETCD_QUOTA_BACKEND_BYTES=1073741824
+    command: etcd -advertise-client-urls=http://127.0.0.1:2379 -listen-client-urls http://0.0.0.0:2379 --data-dir /etcd
+    tmpfs:
+      - /etcd
+
+  minio-test:
+    image: minio/minio:RELEASE.2023-03-20T20-16-18Z
+    environment:
+      MINIO_ACCESS_KEY: minioadmin
+      MINIO_SECRET_KEY: minioadmin
+    ports:
+      - "9002:9000"
+    command: minio server /minio_data
+    tmpfs:
+      - /minio_data
+
+  milvus-test:
+    image: milvusdb/milvus:v2.3.2
+    command: ["milvus", "run", "standalone"]
+    environment:
+      ETCD_ENDPOINTS: etcd-test:2379
+      MINIO_ADDRESS: minio-test:9000
+    ports:
+      - "19531:19530"
+    depends_on:
+      - etcd-test
+      - minio-test
+    tmpfs:
+      - /var/lib/milvus
+
+networks:
+  default:
+    name: kpc-test-network

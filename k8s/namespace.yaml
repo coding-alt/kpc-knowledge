@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kpc-system
+  labels:
+    name: kpc-system
+    app.kubernetes.io/name: kpc-knowledge-system
+    app.kubernetes.io/version: "1.0.0"

@@ -1,0 +1,26 @@
+{
+  "name": "@kpc/codegen",
+  "version": "1.0.0",
+  "description": "推理层 - AI代码生成和UAST处理",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist",
+    "type-check": "tsc --noEmit",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@kpc/shared": "^1.0.0",
+    "@kpc/knowledge": "workspace:*",
+    "handlebars": "^4.7.0",
+    "openai": "^4.20.0"
+  },
+  "devDependencies": {
+    "@types/handlebars": "^4.1.0",
+    "typescript": "^5.0.0",
+    "jest": "^29.0.0",
+    "@types/jest": "^29.0.0"
+  }
+}

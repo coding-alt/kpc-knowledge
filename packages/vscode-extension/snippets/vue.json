@@ -1,0 +1,285 @@
+{
+  "KPC Vue Component": {
+    "prefix": "kpc-vue-component",
+    "body": [
+      "<template>",
+      "  <div class=\"${1:component-class}\">",
+      "    ${2:<!-- Component content -->}",
+      "  </div>",
+      "</template>",
+      "",
+      "<script lang=\"ts\">",
+      "import { defineComponent } from 'vue';",
+      "",
+      "export default defineComponent({",
+      "  name: '${3:ComponentName}',",
+      "  props: {",
+      "    ${4:// Add props here}",
+      "  },",
+      "  emits: [${5:// Add emits here}],",
+      "  setup(props, { emit }) {",
+      "    ${6:// Component logic}",
+      "    ",
+      "    return {",
+      "      ${7:// Return reactive data and methods}",
+      "    };",
+      "  },",
+      "});",
+      "</script>",
+      "",
+      "<style scoped>",
+      ".${1:component-class} {",
+      "  ${8:/* Component styles */}",
+      "}",
+      "</style>"
+    ],
+    "description": "Create a new KPC Vue component with TypeScript"
+  },
+  "KPC Vue Button": {
+    "prefix": "kpc-vue-button",
+    "body": [
+      "<Button",
+      "  variant=\"${1|primary,secondary,success,warning,danger|}\"",
+      "  size=\"${2|small,medium,large|}\"",
+      "  ${3::disabled=\"false\"}",
+      "  @click=\"${4:handleClick}\"",
+      ">",
+      "  ${5:Button Text}",
+      "</Button>"
+    ],
+    "description": "Insert KPC Vue Button component"
+  },
+  "KPC Vue Input": {
+    "prefix": "kpc-vue-input",
+    "body": [
+      "<Input",
+      "  type=\"${1|text,password,email,number|}\"",
+      "  placeholder=\"${2:Enter text...}\"",
+      "  v-model=\"${3:inputValue}\"",
+      "  ${4::required=\"true\"}",
+      "  @change=\"${5:handleChange}\"",
+      "/>"
+    ],
+    "description": "Insert KPC Vue Input component"
+  },
+  "KPC Vue Modal": {
+    "prefix": "kpc-vue-modal",
+    "body": [
+      "<Modal",
+      "  v-model:visible=\"${1:isVisible}\"",
+      "  title=\"${2:Modal Title}\"",
+      "  @close=\"${3:handleClose}\"",
+      "  ${4::closable=\"true\"}",
+      ">",
+      "  ${5:<!-- Modal content -->}",
+      "</Modal>"
+    ],
+    "description": "Insert KPC Vue Modal component"
+  },
+  "KPC Vue Form": {
+    "prefix": "kpc-vue-form",
+    "body": [
+      "<Form",
+      "  @submit=\"${1:handleSubmit}\"",
+      "  ${2:layout=\"vertical\"}",
+      ">",
+      "  <FormItem",
+      "    label=\"${3:Label}\"",
+      "    name=\"${4:fieldName}\"",
+      "    ${5::required=\"true\"}",
+      "  >",
+      "    <Input v-model=\"${6:formData.${4:fieldName}}\" placeholder=\"${7:Enter value...}\" />",
+      "  </FormItem>",
+      "  ",
+      "  <FormItem>",
+      "    <Button type=\"submit\" variant=\"primary\">",
+      "      ${8:Submit}",
+      "    </Button>",
+      "  </FormItem>",
+      "</Form>"
+    ],
+    "description": "Insert KPC Vue Form with form items"
+  },
+  "KPC Vue Table": {
+    "prefix": "kpc-vue-table",
+    "body": [
+      "<Table",
+      "  :columns=\"columns\"",
+      "  :data-source=\"${1:tableData}\"",
+      "  ${2::pagination=\"true\"}",
+      "  ${3::loading=\"false\"}",
+      "/>",
+      "",
+      "<script>",
+      "const columns = [",
+      "  {",
+      "    title: '${4:Column Title}',",
+      "    dataIndex: '${5:dataKey}',",
+      "    key: '${5:dataKey}',",
+      "  },",
+      "  ${6:// Add more columns}",
+      "];",
+      "</script>"
+    ],
+    "description": "Insert KPC Vue Table with columns"
+  },
+  "KPC Vue Card": {
+    "prefix": "kpc-vue-card",
+    "body": [
+      "<Card",
+      "  title=\"${1:Card Title}\"",
+      "  ${2::bordered=\"true\"}",
+      "  ${3::hoverable=\"false\"}",
+      ">",
+      "  ${4:<!-- Card content -->}",
+      "</Card>"
+    ],
+    "description": "Insert KPC Vue Card component"
+  },
+  "KPC Vue Menu": {
+    "prefix": "kpc-vue-menu",
+    "body": [
+      "<Menu",
+      "  mode=\"${1|horizontal,vertical,inline|}\"",
+      "  :selected-keys=\"${2:selectedKeys}\"",
+      "  @select=\"${3:handleSelect}\"",
+      ">",
+      "  <MenuItem key=\"${4:key1}\">",
+      "    ${5:Menu Item 1}",
+      "  </MenuItem>",
+      "  <MenuItem key=\"${6:key2}\">",
+      "    ${7:Menu Item 2}",
+      "  </MenuItem>",
+      "  ${8:<!-- Add more menu items -->}",
+      "</Menu>"
+    ],
+    "description": "Insert KPC Vue Menu component"
+  },
+  "KPC Vue Dropdown": {
+    "prefix": "kpc-vue-dropdown",
+    "body": [
+      "<Dropdown trigger=\"${1|click,hover|}\" placement=\"${2|bottomLeft,bottomCenter,bottomRight|}\">",
+      "  <Button>",
+      "    ${3:Dropdown Button}",
+      "  </Button>",
+      "  <template #overlay>",
+      "    <Menu @click=\"${4:handleMenuClick}\">",
+      "      <MenuItem key=\"${5:key1}\">${6:Option 1}</MenuItem>",
+      "      <MenuItem key=\"${7:key2}\">${8:Option 2}</MenuItem>",
+      "    </Menu>",
+      "  </template>",
+      "</Dropdown>"
+    ],
+    "description": "Insert KPC Vue Dropdown component"
+  },
+  "KPC Vue Tooltip": {
+    "prefix": "kpc-vue-tooltip",
+    "body": [
+      "<Tooltip",
+      "  title=\"${1:Tooltip content}\"",
+      "  placement=\"${2|top,bottom,left,right|}\"",
+      "  ${3:trigger=\"hover\"}",
+      ">",
+      "  ${4:<!-- Wrapped content -->}",
+      "</Tooltip>"
+    ],
+    "description": "Insert KPC Vue Tooltip component"
+  },
+  "KPC Vue Alert": {
+    "prefix": "kpc-vue-alert",
+    "body": [
+      "<Alert",
+      "  type=\"${1|success,info,warning,error|}\"",
+      "  message=\"${2:Alert message}\"",
+      "  ${3:description=\"${4:Alert description}\"}",
+      "  ${5::closable=\"true\"}",
+      "  ${6::show-icon=\"true\"}",
+      "/>"
+    ],
+    "description": "Insert KPC Vue Alert component"
+  },
+  "KPC Vue Progress": {
+    "prefix": "kpc-vue-progress",
+    "body": [
+      "<Progress",
+      "  :percent=\"${1:50}\"",
+      "  type=\"${2|line,circle,dashboard|}\"",
+      "  ${3:status=\"${4|normal,success,exception,active|}\"}",
+      "  ${5::show-info=\"true\"}",
+      "/>"
+    ],
+    "description": "Insert KPC Vue Progress component"
+  },
+  "KPC Vue Spin": {
+    "prefix": "kpc-vue-spin",
+    "body": [
+      "<Spin",
+      "  :spinning=\"${1:loading}\"",
+      "  ${2:tip=\"${3:Loading...}\"}",
+      "  ${4:size=\"${5|small,default,large|}\"}",
+      ">",
+      "  ${6:<!-- Content to be wrapped -->}",
+      "</Spin>"
+    ],
+    "description": "Insert KPC Vue Spin (loading) component"
+  },
+  "KPC Vue Tabs": {
+    "prefix": "kpc-vue-tabs",
+    "body": [
+      "<Tabs",
+      "  v-model:active-key=\"${1:activeKey}\"",
+      "  @change=\"${2:handleTabChange}\"",
+      "  type=\"${3|line,card,editable-card|}\"",
+      ">",
+      "  <TabPane tab=\"${4:Tab 1}\" key=\"${5:tab1}\">",
+      "    ${6:<!-- Tab 1 content -->}",
+      "  </TabPane>",
+      "  <TabPane tab=\"${7:Tab 2}\" key=\"${8:tab2}\">",
+      "    ${9:<!-- Tab 2 content -->}",
+      "  </TabPane>",
+      "</Tabs>"
+    ],
+    "description": "Insert KPC Vue Tabs component"
+  },
+  "KPC Vue Steps": {
+    "prefix": "kpc-vue-steps",
+    "body": [
+      "<Steps :current=\"${1:currentStep}\" direction=\"${2|horizontal,vertical|}\">",
+      "  <Step title=\"${3:Step 1}\" description=\"${4:Step 1 description}\" />",
+      "  <Step title=\"${5:Step 2}\" description=\"${6:Step 2 description}\" />",
+      "  <Step title=\"${7:Step 3}\" description=\"${8:Step 3 description}\" />",
+      "</Steps>"
+    ],
+    "description": "Insert KPC Vue Steps component"
+  },
+  "KPC Vue DatePicker": {
+    "prefix": "kpc-vue-datepicker",
+    "body": [
+      "<DatePicker",
+      "  v-model=\"${1:selectedDate}\"",
+      "  @change=\"${2:handleDateChange}\"",
+      "  placeholder=\"${3:Select date}\"",
+      "  ${4:format=\"YYYY-MM-DD\"}",
+      "  ${5::show-time=\"false\"}",
+      "/>"
+    ],
+    "description": "Insert KPC Vue DatePicker component"
+  },
+  "KPC Vue Upload": {
+    "prefix": "kpc-vue-upload",
+    "body": [
+      "<Upload",
+      "  action=\"${1:/api/upload}\"",
+      "  @change=\"${2:handleUploadChange}\"",
+      "  ${3::multiple=\"false\"}",
+      "  ${4:accept=\"${5:.jpg,.png,.pdf}\"}",
+      ">",
+      "  <Button>",
+      "    <template #icon><UploadOutlined /></template>",
+      "    ${6:Click to Upload}",
+      "  </Button>",
+      "</Upload>"
+    ],
+    "description": "Insert KPC Vue Upload component"
+  }
+}
