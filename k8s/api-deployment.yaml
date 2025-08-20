@@ -84,6 +84,16 @@ spec:
             secretKeyRef:
               name: kpc-secrets
               key: OPENAI_API_KEY
+        - name: OPENAI_BASE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: kpc-config
+              key: OPENAI_BASE_URL
+        - name: OPENAI_MODEL
+          valueFrom:
+            configMapKeyRef:
+              name: kpc-config
+              key: OPENAI_MODEL
         resources:
           requests:
             memory: "512Mi"

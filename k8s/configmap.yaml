@@ -20,6 +20,10 @@ data:
   # API Configuration
   NEXT_PUBLIC_API_URL: "http://kpc-api:3000"
   
+  # AI Configuration
+  OPENAI_BASE_URL: "https://api.openai.com/v1"
+  OPENAI_MODEL: "gpt-4"
+  
   # Monitoring Configuration
   PROMETHEUS_URL: "http://prometheus:9090"
   GRAFANA_URL: "http://grafana:3000"

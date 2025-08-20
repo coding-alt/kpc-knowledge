@@ -15,8 +15,8 @@ export class OpenAIProvider implements AIProvider {
 
   constructor(
     apiKey: string = process.env.OPENAI_API_KEY || '',
-    baseUrl: string = 'https://api.openai.com/v1',
-    defaultModel: string = 'gpt-4'
+    baseUrl: string = process.env.OPENAI_BASE_URL || 'https://api.openai.com/v1',
+    defaultModel: string = process.env.OPENAI_MODEL || 'gpt-4'
   ) {
     if (!apiKey) {
       throw new Error('OpenAI API key is required');

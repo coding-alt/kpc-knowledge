@@ -156,13 +156,15 @@ export class HuggingFaceEmbeddingProvider implements EmbeddingProvider {
 
 export class OpenAIEmbeddingProvider implements EmbeddingProvider {
   private apiKey: string;
+  private baseUrl: string;
   private modelName: string;
   private dimension: number;
   private maxTokens: number;
 
   constructor(
     apiKey: string = process.env.OPENAI_API_KEY || '',
-    modelName: string = 'text-embedding-3-small'
+    modelName: string = 'text-embedding-3-small',
+    baseUrl: string = process.env.OPENAI_BASE_URL || 'https://api.openai.com/v1'
   ) {
     if (!apiKey) {
       throw new Error('OpenAI API key is required');
@@ -170,6 +172,7 @@ export class OpenAIEmbeddingProvider implements EmbeddingProvider {
 
     this.apiKey = apiKey;
     this.modelName = modelName;
+    this.baseUrl = baseUrl;
 
     // OpenAI模型配置
     const modelConfigs: Record<string, { dimension: number; maxTokens: number }> = {
@@ -191,7 +194,7 @@ export class OpenAIEmbeddingProvider implements EmbeddingProvider {
     try {
       logger.debug(`Generating OpenAI embedding for text: ${text.substring(0, 100)}...`);
 
-      const response = await fetch('https://api.openai.com/v1/embeddings', {
+      const response = await fetch(`${this.baseUrl}/embeddings`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${this.apiKey}`,
@@ -236,7 +239,7 @@ export class OpenAIEmbeddingProvider implements EmbeddingProvider {
     logger.info(`Generating OpenAI embeddings for ${texts.length} texts`);
 
     try {
-      const response = await fetch('https://api.openai.com/v1/embeddings', {
+      const response = await fetch(`${this.baseUrl}/embeddings`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${this.apiKey}`,

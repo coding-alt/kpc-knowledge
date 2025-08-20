@@ -11,6 +11,7 @@ import {
   createSuccessResult,
   createErrorResult 
 } from '@kpc/shared';
+import { AIProviderFactory } from './ai-provider-factory';
 
 const logger = createLogger('RequirementParser');
 

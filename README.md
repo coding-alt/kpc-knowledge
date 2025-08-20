@@ -1,29 +1,18 @@
 # KPC Knowledge System
 
-**AI-Powered Component Knowledge Platform** - Revolutionary frontend development through intelligent code generation, validation, and component management across React, Vue, and Intact frameworks.
+一个基于知识图谱和向量数据库的智能代码生成与组件管理系统，支持多框架组件解析、AI 驱动的代码生成和实时监控。
 
-## 🎯 Project Overview
+## 🚀 核心特性
 
-KPC Knowledge System is a comprehensive AI-powered platform that transforms frontend development through:
+- **🧠 AI 驱动的代码生成**：自然语言到 UAST 到多框架代码
+- **🔍 智能组件发现**：自动化源码分析，支持跨框架对齐
+- **📊 知识图谱**：Neo4j 驱动的组件关系和依赖追踪
+- **🚀 向量搜索**：基于 Milvus 的语义搜索，500ms 响应时间
+- **✅ 多层验证**：静态分析、运行时测试和自愈纠正
+- **📈 实时分析**：性能监控和使用洞察
+- **🔧 多 AI 服务支持**：OpenAI、Azure OpenAI、本地部署等
 
-- **🧠 Intelligent Code Generation**: Natural language to production-ready components with 96%+ accuracy
-- **🔍 Smart Component Discovery**: Automated analysis and cataloging of UI components with 98%+ information extraction accuracy  
-- **✅ Multi-Layer Validation**: TypeScript, ESLint, visual regression, and accessibility testing with 99%+ compilation success
-- **📊 Advanced Analytics**: Real-time insights into component usage, code quality, and team productivity
-- **🛠 Developer Tools**: VS Code extension, CLI tools, and web interface for seamless workflow integration
-
-### 🏆 Key Achievements
-
-- **✅ 98.5% Component Information Accuracy** (Target: ≥98%)
-- **✅ 99.1% Cross-Framework Compilation Success** (Target: ≥99%)  
-- **✅ 95.8% Visual Regression Stability** (Target: ≥95%)
-- **✅ 3.2s Average Code Generation Time** (Target: <5s)
-- **✅ 85ms API Response Time** (Target: <100ms)
-- **✅ 99.95% System Uptime** (Target: ≥99.9%)
-
-## 🏗️ System Architecture
-
-Enterprise-grade microservices architecture with AI-powered intelligence:
+## 🏗️ 系统架构
 
 ```mermaid
 graph TB
@@ -75,347 +64,379 @@ graph TB
     Redis --> GraphQL
 ```
 
-### Core Components
+## 🚀 快速开始
 
-- **🧠 AI-Powered Code Generation**: Natural language to UAST to multi-framework code
-- **🔍 Intelligent Component Discovery**: Automated source analysis with cross-framework alignment
-- **📊 Knowledge Graph**: Neo4j-powered component relationships and dependency tracking
-- **🚀 Vector Search**: Milvus-based semantic search with 500ms response time
-- **✅ Multi-Layer Validation**: Static analysis, runtime testing, and self-healing correction
-- **📈 Real-Time Analytics**: Performance monitoring and usage insights
-
-## 🚀 Quick Start
-
-### Prerequisites
+### 前置要求
 
 - Node.js >= 18.0.0
 - Docker & Docker Compose
-- OpenAI API Key
+- AI 服务 API 密钥 (OpenAI 或其他兼容服务)
 
-### Installation
+### 安装配置
 
 ```bash
-# 1. Clone and setup
+# 1. 克隆并设置
 git clone <repository-url>
 cd kpc-knowledge-system
 yarn install
 
-# 2. Environment configuration
+# 2. 环境配置
 cp .env.example .env
-# Add your OpenAI API key to .env
+# 配置 AI 服务 API 密钥 (支持 OpenAI 和其他兼容服务)
 
-# 3. Start with Docker Compose (Recommended)
+# 3. 使用 Docker Compose 启动 (推荐)
 ./scripts/deploy.sh
 
-# 4. Or start manually
+# 4. 或手动启动
 yarn build
-docker-compose up -d  # Start databases
-yarn start:dev        # Start services
+docker-compose up -d  # 启动数据库
+yarn start:dev        # 启动服务
 ```
 
-### Access Points
+## 🔧 环境配置
 
-- **Web UI**: http://localhost (or http://localhost:3001)
-- **API Playground**: http://localhost/api/graphql
-- **Grafana Monitoring**: http://localhost:3002 (admin/admin)
-- **Neo4j Browser**: http://localhost:7474 (neo4j/neo4j_password)
+### 基础配置
 
-### First Steps
+复制 `.env.example` 文件并配置必要的环境变量：
 
 ```bash
-# Initialize component knowledge base
-yarn kpc dataset init --samples
-
-# Generate your first component
-yarn kpc generate "Create a button with primary and secondary variants" --framework react
-
-# Validate generated code
-yarn kpc validate --file ./generated-button.tsx
-
-# Run comprehensive test suite
-yarn kpc test-suite --all
+cp .env.example .env
 ```
 
-## 📦 项目结构
+### AI 服务配置
 
-```
-kpc-knowledge-system/
-├── packages/
-│   ├── shared/          # 共享类型定义和工具函数
-│   ├── crawler/         # 数据采集层 - 源码和文档抓取
-│   ├── parser/          # 语义解析层 - AST解析和清单生成
-│   ├── knowledge/       # 知识存储层 - 向量数据库和图谱
-│   ├── codegen/         # AI推理层 - 需求解析和代码生成
-│   ├── validator/       # 验证系统 - 静态和运行时验证
-│   ├── api/             # GraphQL API服务
-│   ├── cli/             # 命令行工具
-│   └── web/             # Web管理控制台
-├── docker-compose.yml   # 开发环境数据库配置
-├── test-system.ts       # 系统集成测试
-└── .github/workflows/   # CI/CD配置
-```
-
-## ⚡ Core Features
-
-### 🧠 AI-Powered Code Generation
-- **Natural Language Processing**: Transform requirements into production-ready code
-- **Multi-Framework Support**: React, Vue, and Intact with framework-specific patterns
-- **Context-Aware Generation**: Design system compliance and best practices
-- **Template Customization**: Extensible template engine for team standards
-
-### 🔍 Intelligent Component Discovery
-- **Automated Analysis**: Extract props, events, and metadata from existing components
-- **Cross-Framework Mapping**: Semantic alignment between React, Vue, and Intact
-- **Dependency Tracking**: Build comprehensive component relationship graphs
-- **Real-Time Updates**: Incremental knowledge base updates
-
-### ✅ Comprehensive Validation
-- **Static Analysis**: TypeScript type checking and ESLint rule enforcement
-- **Runtime Testing**: Storybook visual regression and Playwright E2E testing
-- **Accessibility Compliance**: WCAG 2.1 AA standard validation
-- **Self-Healing**: AI-driven error detection and automatic correction
-
-### 📊 Advanced Analytics
-- **Usage Insights**: Component popularity and adoption trends
-- **Performance Monitoring**: Real-time system metrics and alerting
-- **Code Quality**: Maintainability scores and technical debt tracking
-- **Team Productivity**: Development velocity and efficiency metrics
-
-### 🛠 Developer Tools
-- **VS Code Extension**: Intelligent autocomplete and real-time validation
-- **CLI Tools**: Command-line interface for all system operations
-- **Web Interface**: Comprehensive management dashboard
-- **GraphQL API**: Real-time subscriptions and comprehensive queries
-
-## 🛠️ Development
-
-### Development Commands
+#### OpenAI 配置
 
 ```bash
-# Development mode with hot reload
-yarn dev
+# OpenAI API 密钥 (必需)
+OPENAI_API_KEY=your_openai_api_key_here
 
-# Build all packages
-yarn build
+# OpenAI API 基础 URL (可选，默认为官方 API)
+# 支持自定义 OpenAI 兼容的 API 端点
+OPENAI_BASE_URL=https://api.openai.com/v1
 
-# Run test suites
-yarn test              # Unit tests
-yarn test:integration  # Integration tests
-yarn test:e2e          # End-to-end tests
-yarn test:performance  # Performance benchmarks
-
-# Code quality
-yarn lint              # ESLint + Prettier
-yarn type-check        # TypeScript validation
-yarn test:coverage     # Coverage reports
-
-# Database management
-yarn docker:up         # Start databases
-yarn docker:down       # Stop databases
-yarn docker:logs       # View logs
+# OpenAI 默认模型 (可选，默认为 gpt-4)
+OPENAI_MODEL=gpt-4
 ```
 
-### VS Code Integration
+#### 支持自定义 OpenAI 兼容 API
 
-1. Install the KPC extension: `code --install-extension kpc-knowledge-system.vsix`
-2. Configure API URL in settings: `"kpc.apiUrl": "http://localhost:3000"`
-3. Use intelligent features:
-   - Type `kpc:` for component suggestions
-   - Hover for component documentation
-   - Ctrl+. for quick fixes and refactoring
+通过配置 `OPENAI_BASE_URL`，您可以支持任何符合 OpenAI API 格式的服务：
 
-## 🧪 Testing & Quality Assurance
+**Azure OpenAI**
+```bash
+OPENAI_API_KEY=your_azure_openai_api_key
+OPENAI_BASE_URL=https://your-resource.openai.azure.com/openai/deployments/your-deployment
+OPENAI_MODEL=gpt-4
+```
 
-### Comprehensive Test Suite
+**本地部署 (如 vLLM)**
+```bash
+OPENAI_API_KEY=your_local_api_key
+OPENAI_BASE_URL=http://localhost:8000/v1
+OPENAI_MODEL=your-local-model
+```
+
+**其他兼容服务**
+```bash
+OPENAI_API_KEY=your_api_key
+OPENAI_BASE_URL=https://api.your-service.com/v1
+OPENAI_MODEL=your-model-name
+```
+
+#### 其他 AI 服务
 
 ```bash
-# Run full system integration tests
-npx tsx test-system.ts
+# HuggingFace API 密钥 (用于文本嵌入)
+HUGGINGFACE_API_KEY=your_huggingface_api_key_here
 
-# Run golden dataset validation
-yarn kpc test-suite --all --sample-size 50
-
-# Performance benchmarking
-yarn test:performance
-
-# End-to-end testing
-yarn test:e2e
+# Anthropic API 密钥 (可选，作为 OpenAI 的替代)
+ANTHROPIC_API_KEY=your_anthropic_api_key_here
 ```
 
-### Quality Metrics Achieved
-
-| Metric | Target | Achieved | Status |
-|--------|--------|----------|---------|
-| Component Info Accuracy | ≥98% | 98.5% | ✅ |
-| Compilation Success Rate | ≥99% | 99.1% | ✅ |
-| Visual Stability Rate | ≥95% | 95.8% | ✅ |
-| API Response Time | <100ms | 85ms | ✅ |
-| Code Generation Time | <5s | 3.2s | ✅ |
-| System Uptime | ≥99.9% | 99.95% | ✅ |
-
-### Test Coverage
-- **Unit Tests**: 95%+ coverage across all packages
-- **Integration Tests**: Complete API and service testing
-- **E2E Tests**: Full user workflow validation
-- **Performance Tests**: Load testing and benchmarking
-- **Golden Dataset**: 50+ validated test scenarios
-
-## 🔌 API Reference
-
-### GraphQL API
-
-Access the interactive playground at http://localhost/api/graphql
-
-**Core Queries:**
-```graphql
-# Search components
-query SearchComponents($query: String!) {
-  searchComponents(query: $query) {
-    id name framework description
-    props { name type required }
-  }
-}
-
-# Generate code
-mutation GenerateCode($requirement: String!, $framework: String!) {
-  generateCode(requirement: $requirement, framework: $framework) {
-    success code errors { message }
-  }
-}
-
-# Real-time metrics
-subscription SystemMetricsUpdated {
-  systemMetricsUpdated {
-    timestamp performance { apiLatency errorRate }
-  }
-}
-```
-
-**Key Endpoints:**
-- `components` - Component library queries with filtering
-- `generateCode` - AI-powered code generation
-- `validateCode` - Multi-layer code validation
-- `searchComponents` - Semantic search with relevance scoring
-- `systemMetrics` - Real-time performance monitoring
-
-### CLI Tools
+### 数据库配置
 
 ```bash
-# Component generation
-kpc generate "Create a responsive card component" --framework react
+# PostgreSQL 数据库连接
+DATABASE_URL=postgresql://kpc:kpc_password@localhost:5432/kpc_db
 
-# Code validation
-kpc validate --file ./component.tsx --framework react
+# Neo4j 图数据库配置
+NEO4J_URI=bolt://localhost:7687
+NEO4J_USERNAME=neo4j
+NEO4J_PASSWORD=neo4j_password
 
-# Component search
-kpc search "button" --framework vue
+# Milvus 向量数据库配置
+MILVUS_HOST=localhost
+MILVUS_PORT=19530
+MILVUS_USERNAME=
+MILVUS_PASSWORD=
+MILVUS_SSL=false
 
-# Dataset management
-kpc dataset init --samples
-kpc dataset validate
-
-# Test suite execution
-kpc test-suite --accuracy --compilation --performance
+# Redis 缓存配置
+REDIS_URL=redis://localhost:6379
 ```
 
-## 🎨 Web Interface
-
-Access the management console at http://localhost
-
-**Features:**
-- **📊 System Monitoring**: Real-time performance metrics and health status
-- **🔍 Component Browser**: Search and explore component library with filtering
-- **📝 Code Generator**: Interactive interface for natural language to code
-- **✅ Validation Dashboard**: Code quality analysis and validation results
-- **📈 Analytics**: Usage insights, trends, and team productivity metrics
-- **⚙️ Configuration**: System settings and integration management
-
-**Monitoring Dashboards:**
-- Performance metrics with 30-second real-time updates
-- Component usage analytics and adoption trends
-- Error tracking and alert management
-- System health indicators across all services
-
-## 🚀 Production Deployment
-
-### Docker Deployment (Recommended)
+### 应用配置
 
 ```bash
-# Production deployment with all services
-./scripts/deploy.sh
+# 应用环境
+NODE_ENV=development
 
-# Or with Docker Compose
+# API 服务端口
+PORT=3000
+
+# Web 服务端口
+WEB_PORT=3001
+
+# JWT 密钥 (用于身份验证)
+JWT_SECRET=your-jwt-secret-key
+
+# NextAuth 密钥 (用于 Web 应用认证)
+NEXTAUTH_SECRET=your-nextauth-secret
+
+# GitHub Token (用于代码爬取和分析)
+GITHUB_TOKEN=your_github_token_here
+
+# API 端点配置
+NEXT_PUBLIC_API_URL=http://localhost:3000/graphql
+NEXT_PUBLIC_WS_URL=ws://localhost:3000/graphql
+```
+
+## 💻 使用示例
+
+### 使用 AI Provider 工厂
+
+```typescript
+import { AIProviderFactory } from '@kpc/codegen';
+
+// 使用环境变量自动创建 Provider
+const aiProvider = AIProviderFactory.createDefaultProvider();
+
+// 或者手动指定配置
+const customProvider = AIProviderFactory.createProvider({
+  provider: 'openai',
+  apiKey: 'your-api-key',
+  baseUrl: 'https://your-custom-endpoint.com/v1',
+  model: 'gpt-4'
+});
+
+// 创建 OpenAI 兼容的 Provider
+const compatibleProvider = AIProviderFactory.createOpenAICompatibleProvider(
+  'your-api-key',
+  'https://your-endpoint.com/v1',
+  'your-model'
+);
+```
+
+### 在 Requirement Parser 中使用
+
+```typescript
+import { AIRequirementParser } from '@kpc/codegen';
+import { AIProviderFactory } from '@kpc/codegen';
+
+// 创建 AI Provider
+const aiProvider = AIProviderFactory.createDefaultProvider();
+
+// 创建 Requirement Parser
+const parser = new AIRequirementParser(aiProvider);
+
+// 解析需求
+const result = await parser.parseRequirement(
+  "创建一个带有提交按钮的表单"
+);
+```
+
+### 配置验证
+
+```typescript
+import { AIProviderFactory } from '@kpc/codegen';
+
+// 获取当前环境的最佳配置
+const config = AIProviderFactory.getOptimalConfig();
+console.log('Current AI configuration:', config);
+
+// 验证配置
+const isValid = AIProviderFactory.validateConfig(config);
+console.log('Configuration is valid:', isValid);
+```
+
+## 🎯 核心工作流
+
+### 工作流 1: 组件发现与验证
+
+```bash
+# 1. 爬取现有组件
+yarn kpc crawl --source ./src/components --framework react
+
+# 2. 生成组件清单
+yarn kpc manifest generate --output ./component-manifest.json
+
+# 3. 验证现有组件
+yarn kpc validate --directory ./src/components --fix
+```
+
+### 工作流 2: 设计系统合规
+
+```bash
+# 1. 设置设计系统规则
+yarn kpc init --design-system material-ui
+
+# 2. 生成合规组件
+yarn kpc generate "Create a card component" --design-system material-ui
+
+# 3. 验证设计系统合规性
+yarn kpc validate --design-system-check
+```
+
+### 工作流 3: 跨框架迁移
+
+```bash
+# 1. 解析 React 组件
+yarn kpc parse --source ./react-components --framework react
+
+# 2. 生成 Vue 等价组件
+yarn kpc translate --from react --to vue --input ./react-components
+
+# 3. 验证翻译结果
+yarn kpc test-suite --compilation --framework vue
+```
+
+## 🚀 部署
+
+### Docker Compose (推荐)
+
+```bash
+# 启动所有服务
 docker-compose up -d
 
-# Health check
-curl http://localhost/api/health
+# 查看服务状态
+docker-compose ps
+
+# 查看日志
+docker-compose logs -f api
 ```
 
-### Kubernetes Deployment
+### Kubernetes
 
 ```bash
-# Deploy to Kubernetes cluster
-kubectl apply -f k8s/namespace.yaml
-kubectl apply -f k8s/configmap.yaml
-kubectl apply -f k8s/databases.yaml
-kubectl apply -f k8s/api-deployment.yaml
-kubectl apply -f k8s/web-deployment.yaml
-kubectl apply -f k8s/ingress.yaml
+# 部署到 Kubernetes
+kubectl apply -f k8s/
 
-# Verify deployment
+# 检查部署状态
 kubectl get pods -n kpc-system
+
+# 查看服务
+kubectl get svc -n kpc-system
 ```
 
-### Performance & Scale
+### 环境变量配置
 
-- **Throughput**: 10,000+ requests/minute
-- **Concurrent Users**: 1000+ supported
-- **Response Time**: <100ms for queries, <5s for generation
-- **Availability**: 99.95% uptime with auto-scaling
-- **Cache Hit Rate**: 85%+ with Redis optimization
+在 `docker-compose.yml` 中，环境变量会自动传递：
 
-## 📚 Documentation
+```yaml
+services:
+  api:
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_BASE_URL=${OPENAI_BASE_URL:-https://api.openai.com/v1}
+      - OPENAI_MODEL=${OPENAI_MODEL:-gpt-4}
+```
 
-- **[Quick Start Guide](./docs/getting-started/quick-start.md)** - Get running in 5 minutes
-- **[Developer Guide](./docs/user-guides/developer-guide.md)** - Comprehensive development workflows
-- **[API Reference](./docs/api/graphql.md)** - Complete GraphQL schema and examples
-- **[Architecture Overview](./docs/architecture/overview.md)** - System design and components
-- **[Deployment Guide](./docs/deployment/kubernetes.md)** - Production deployment instructions
+## 🔧 故障排除
 
-## 🔒 Security & Compliance
+### 常见问题
 
-- **Authentication**: OAuth 2.0, SAML, API key authentication
-- **Authorization**: Role-based access control (RBAC)
-- **Data Protection**: End-to-end encryption, secure API endpoints
-- **Compliance**: SOC 2 Type II, GDPR compliant
-- **Security Scanning**: Automated vulnerability detection and patching
+1. **API 密钥错误**
+   ```
+   Error: OpenAI API key is required
+   ```
+   解决方案：检查 `OPENAI_API_KEY` 环境变量是否正确设置
 
-## 🤝 Contributing
+2. **Base URL 连接失败**
+   ```
+   Error: OpenAI API error: 404 Not Found
+   ```
+   解决方案：检查 `OPENAI_BASE_URL` 是否正确，确保端点支持 OpenAI API 格式
 
-We welcome contributions! Please see our [Contributing Guide](./docs/development/contributing.md) for details.
+3. **模型不存在**
+   ```
+   Error: The model does not exist
+   ```
+   解决方案：检查 `OPENAI_MODEL` 是否在您的服务中可用
 
-### Development Standards
-- **TypeScript**: Strict type safety with comprehensive interfaces
-- **Code Quality**: ESLint + Prettier with 95%+ test coverage
-- **Architecture**: SOLID principles with clean architecture patterns
-- **Performance**: <100ms API responses, <5s code generation
-- **Security**: OWASP compliance with automated vulnerability scanning
+### 调试模式
 
-## 📄 License
+启用调试日志以获取更多信息：
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+```bash
+LOG_LEVEL=debug
+```
 
-## 🌟 Acknowledgments
+### 健康检查
 
-- **[KPC Component Library](https://github.com/ksc-fe/kpc)** - Foundation component library
-- **[Milvus](https://milvus.io/)** - High-performance vector database
-- **[Neo4j](https://neo4j.com/)** - Graph database for knowledge relationships
-- **[OpenAI](https://openai.com/)** - AI-powered code generation capabilities
+使用 CLI 工具检查 AI 服务状态：
+
+```bash
+yarn kpc health --check-ai
+```
+
+## 📊 监控与分析
+
+### 实时监控
+
+- **性能指标**：响应时间、吞吐量、错误率
+- **资源使用**：CPU、内存、磁盘 I/O
+- **AI 服务**：API 调用次数、成本、延迟
+- **用户行为**：组件使用频率、生成成功率
+
+### 日志分析
+
+```bash
+# 查看应用日志
+docker-compose logs -f api
+
+# 查看数据库日志
+docker-compose logs -f postgres neo4j
+
+# 查看向量数据库日志
+docker-compose logs -f milvus-standalone
+```
+
+## 🔒 安全最佳实践
+
+1. **API 密钥管理**
+   - 永远不要在代码中硬编码 API 密钥
+   - 使用环境变量或密钥管理服务
+   - 定期轮换 API 密钥
+
+2. **环境分离**
+   - 为开发、测试、生产环境使用不同的配置
+   - 使用 `.env.local` 进行本地开发
+   - 在 CI/CD 中使用安全的密钥注入
+
+3. **网络安全**
+   - 使用 HTTPS 进行 API 通信
+   - 配置适当的防火墙规则
+   - 定期更新依赖包
+
+## 🤝 贡献指南
+
+1. Fork 项目
+2. 创建功能分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 打开 Pull Request
+
+## 📄 许可证
+
+本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
+
+## 🆘 支持
+
+- 📧 邮箱：support@kpc-knowledge.com
+- 💬 讨论：[GitHub Discussions](https://github.com/kpc/knowledge-system/discussions)
+- 🐛 问题报告：[GitHub Issues](https://github.com/kpc/knowledge-system/issues)
 
 ---
 
-## 🎉 Project Status: Production Ready ✅
-
-**KPC Knowledge System** successfully delivers enterprise-grade AI-powered frontend development with 98%+ accuracy, 99%+ reliability, and revolutionary cross-framework capabilities.
-
-**Ready to transform your development workflow?** [Get started in 5 minutes →](./docs/getting-started/quick-start.md)
+**KPC Knowledge System** - 让代码生成更智能，让组件管理更高效 🚀

@@ -19,6 +19,8 @@ services:
       - REDIS_URL=redis://redis:6379
       - JWT_SECRET=your-jwt-secret-key
       - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_BASE_URL=${OPENAI_BASE_URL:-https://api.openai.com/v1}
+      - OPENAI_MODEL=${OPENAI_MODEL:-gpt-4}
     depends_on:
       - postgres
       - neo4j
